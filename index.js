@@ -7,8 +7,7 @@ const io=require('socket.io')(server);
 const {PeerServer} =require('peer')
 const peerServer=PeerServer({
     port:3001,
-    path:'/',
-    proxied:true
+    path:'/'
 })
 app.set('view engine','ejs')
 app.set('views','./views')
@@ -18,16 +17,14 @@ app.use(express.urlencoded({extended:true}))
 const {v4:uuidv4}=require('uuid')
 
 io.on('connection',socket=>{
-    console.log("connected with id "+socket.id)
     socket.on('join-room',(roomID,userID)=>{
-        console.log(roomID,userID);
         socket.join(roomID);
-        socket.broadcast.emit('user-connected',userID);
+        socket.to(roomID).emit('user-connected',userID);
         socket.on('disconnect', () => {
-            socket.broadcast.emit('user-disconnected', userID)
+            socket.to(roomID).emit('user-disconnected', userID)
           })
         socket.on('ready-to-call',id=>{
-            socket.broadcast.emit('ready-call',id);
+            socket.to(roomID).emit('ready-call',id);
         })
     })
 })
