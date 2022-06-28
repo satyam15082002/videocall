@@ -38,13 +38,15 @@ myPeer.on('open',id=>{
 
 function callFunction(peerID)
 {
+    const videoContainer=createVideoContainer(null)
     const video=document.createElement('video')
     var call = myPeer.call(peerID, userData.stream);
     call.on('stream', function(remoteStream) {
-        addVideoStream(video,remoteStream);
+        videoContainer.querySelector('video').srcObject=remoteStream;
+        videoGrid.append(videoContainer)
     });
     call.on('close',()=>{
-        video.remove();
+        videoContainer.querySelector('video').remove();
     })
     peers[peerID]=call;
 }
@@ -55,11 +57,12 @@ socket.on('ready-call',id=>{
 
 function answerFunction(stream)
 {
-    const video=document.createElement('video')
+    const videoContainer=createVideoContainer(null)
     myPeer.on('call',call=>{
         call.answer(stream)
         call.on('stream',remoteStream=>{
-            addVideoStream(video,remoteStream)
+            videoContainer.querySelector('video').srcObject=remoteStream
+            videoGrid.append(videoContainer)
         })
     })
     socket.emit('ready-to-call',userData.id);
