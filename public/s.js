@@ -5,8 +5,6 @@ const myPeer=new Peer(undefined,{
     host:'/',
     port:'3001'
 })
-const myVideo=document.createElement('video')
-myVideo.muted=true;
 const userData={
     stream:null,
     id:null,
@@ -20,12 +18,11 @@ socket.on('user-disconnected', userID=>{
         peers[userID].close()
 })
 
-navigator.mediaDevices.getUserMedia({video:true})
+navigator.mediaDevices.getUserMedia({audio:true,video:true})
 .then(stream=>{
     userData.stream=stream
-    myVideo.srcObject=stream
-    myVideo.onloadedmetadata=()=>myVideo.play();
-    videoGrid.append(myVideo)
+    const videoContainer=createVideoContainer(stream)
+    videoGrid.append(videoContainer)
     answerFunction(stream);
 })
 socket.on('user-connected',userID=>{
@@ -73,4 +70,27 @@ function addVideoStream(video,stream)
     video.srcObject=stream;
     video.onloadedmetadata=(e)=>video.play();
     videoGrid.append(video)
+}
+
+
+function createVideoContainer(stream)
+{
+    const videoContainer=document.querySelector('#videoTemplate').content.cloneNode(true)
+    const videoElement=videoContainer.querySelector('video')
+    const micBtn=videoContainer.querySelector('.mic')
+    const maxmizeBtn=videoContainer.querySelector('.maxmize')
+
+    videoElement.srcObject=stream
+    videoElement.onloadedmetadata=()=>videoElement.play();
+
+    micBtn.onclick=()=>{
+        videoElement.muted=!videoElement.muted
+        micBtn.classList.toggle('fa-microphone-slash')
+    }
+
+    maxmizeBtn.onclick=(e)=>{
+        videoElement.parentElement.requestFullscreen()
+    }
+
+    return videoContainer;
 }

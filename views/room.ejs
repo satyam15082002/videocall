@@ -11,11 +11,21 @@
     <script defer src="./peer.js"></script>
     <script defer src="./socket.io/socket.io.js"></script>
     <script defer src="./s.js"></script>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
+
 </head>
 <body>
     <div class="video-grid">
-
+        <template id="videoTemplate">
+            <div class="video-container">
+                <video src="" ></video>
+                <div class="video-controls">
+                    <button class="fa fa-microphone mic"></button>
+                    <button class="fa fa-window-maximize maxmize"></button>
+                </div>
+            </div>
+        </template>
     </div>
     <footer>
 </body>
