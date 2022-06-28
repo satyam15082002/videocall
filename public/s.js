@@ -1,10 +1,7 @@
 const videoGrid=document.querySelector('.video-grid')
 const peerInput=document.querySelector('#peer-id')
 const socket=io('/')
-const myPeer=new Peer(undefined,{
-    port:'3001',
-    host:'/'
-})
+const myPeer=new Peer()
 const userData={
     stream:null,
     id:null,
@@ -25,7 +22,7 @@ navigator.mediaDevices.getUserMedia({audio:true,video:true})
     answerFunction(stream);
 })
 socket.on('user-connected',userID=>{
-    
+
 })
 myPeer.on('open',id=>{
     userData.id=id
