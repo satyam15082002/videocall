@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/cg.css">
+</head>
+<body>
+    <fieldset>
+        <legend>Create Group</legend>
+        <form action="/create" method="post" id="form">
+            <i class="fa fa-users"></i>
+            <br>
+            <input type="text" name="groupName" required placeholder="Enter group name" />
+            <br>
+            <br>
+            <button type="submit" class="fa fa-plus"> Create Group</button>
+        </form>
+    </fieldset>
+    <script>
+        const input=document.querySelector('input[type="text"]')
+        const form=document.getElementById('form')
+    </script>
+</body>
+</html>
