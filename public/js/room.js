@@ -121,7 +121,7 @@ function persistCreatedGroup()
     else
     {
         var groups=JSON.parse(groupsJSONString)
-        groups.filter(g=>g.groupUrl!==group.groupUrl)
+        groups=groups.filter(g=>g.groupLink!==group.groupLink)
         groups.push(group);
         console.log(groups)
     }
