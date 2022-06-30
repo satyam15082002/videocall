@@ -87,3 +87,44 @@ function createVideoContainer(stream)
 
     return videoContainer;
 }
+
+const shareButton=document.querySelector('#share-button')
+
+shareButton.addEventListener('click',(e)=>{
+    const inviteLink=`${location.origin}/${ROOM_ID}`
+    navigator.share({
+        title:'share',
+        text:`Join group video call ${inviteLink.split("/")[0]}using link`,
+        url:inviteLink
+    })
+})
+
+
+//persist group
+function persistCreatedGroup()
+{
+    const group={
+        groupName:null,
+        groupLink:null
+    }
+    const groupLink=`${location.origin}/${ROOM_ID}`
+    group.groupName=ROOM_ID.split("-")[0]
+    group.groupLink=groupLink
+
+    var groupsJSONString=localStorage.getItem("groups")
+    if(groupsJSONString==null||groupsJSONString=="")
+    {
+        var groups=[]
+        groups.push(group);
+        localStorage.setItem("groups",JSON.stringify(groups))
+    }
+    else
+    {
+        var groups=JSON.parse(groupsJSONString)
+        groups.filter(g=>g.groupUrl!==group.groupUrl)
+        groups.push(group);
+        console.log(groups)
+    }
+    localStorage.setItem("groups",JSON.stringify(groups));
+}
+persistCreatedGroup();

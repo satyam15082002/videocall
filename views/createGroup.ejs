@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/cg.css">
+    <script defer src="./js/createGroup.js"></script>
 </head>
 <body>
     <fieldset>
@@ -20,9 +21,19 @@
             <button type="submit" class="fa fa-plus"> Create Group</button>
         </form>
     </fieldset>
-    <script>
-        const input=document.querySelector('input[type="text"]')
-        const form=document.getElementById('form')
-    </script>
+    <div id="group-container">
+        <h3 style="margin-left: 0.2rem;">Your Groups </h3>        
+        <template id="groupTemplate">
+            <div class="group">
+                <a href="">Hello World</a>
+                <a class="fa fa-share" href=""></a>
+            </div>
+        </template>
+        
+        <div class="group">
+            <a href="">Hello World</a>
+            <a class="fa fa-share" href=""></a>
+        </div>
+    </div>
 </body>
 </html>

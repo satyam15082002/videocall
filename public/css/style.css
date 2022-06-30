@@ -53,3 +53,17 @@ video
     padding: 1rem;
     margin-right: 10px;
 }
+#share-button
+{
+    position: fixed;
+    padding-left: 5px;
+    padding-right:2px;
+    z-index: 100;
+    right: 0;
+    bottom: 5vh;
+    width: 60px;
+    height: 60px;
+    color: white;
+    border-radius: 50%;
+    background-color: #00e676;
+}

@@ -38,3 +38,39 @@ input[type="text"]
     margin-bottom: 0.8rem;
     transform: scale(1.2) translateX(20%);
 }
+#group-container
+{
+    margin-top: 0.3rem;
+    padding: 0.25rem;
+    min-height: 50vh;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #263238;
+    color: white;
+}
+#group-container .group
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    background-color: #344953;
+    margin: 0.2rem 0.3rem;
+    padding: 0.3rem 0.5rem;
+}
+#group-container .group .fa-share
+{
+    padding-top: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-right: 1rem;
+    border-radius: 0.2rem;
+}
+#group-container .group .fa-share:hover
+{
+    background-color: red;
+}
+#group-container a
+{
+    text-decoration: none;
+    color: white;
+}

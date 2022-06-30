@@ -8,15 +8,16 @@
     <script>
         const ROOM_ID=`<%= locals.roomID %>`;
     </script>
-    <script defer src="./peer.js"></script>
+    <script defer src="./js/peer.js"></script>
     <script defer src="./socket.io/socket.io.js"></script>
-    <script defer src="./s.js"></script>
+    <script defer src="./js/room.js"></script>
     <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
 <body>
     <div class="video-grid">
+        <button class="fa fa-share" id="share-button">Share</button>
         <template id="videoTemplate">
             <div class="video-container">
                 <video src="" ></video>
