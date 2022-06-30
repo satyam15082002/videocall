@@ -18,6 +18,7 @@ navigator.mediaDevices.getUserMedia({audio:true,video:true})
 .then(stream=>{
     userData.stream=stream
     const videoContainer=createVideoContainer(stream)
+    videoContainer.querySelector('video').muted=true
     videoGrid.append(videoContainer)
     answerFunction(stream);
 })
