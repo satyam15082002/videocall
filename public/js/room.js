@@ -14,14 +14,7 @@ socket.on('user-disconnected', userID=>{
         peers[userID].close()
 })
 
-navigator.mediaDevices.getUserMedia({
-    audio:{
-        echoCancellation: true,
-        noiseSuppression: true,
-        sampleRate: 44100,
-    },
-    video:true
-})
+navigator.mediaDevices.getUserMedia({audio:true,video:true})
 .then(stream=>{
     userData.stream=stream
     const videoContainer=createVideoContainer(stream)
