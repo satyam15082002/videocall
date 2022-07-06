@@ -14,11 +14,15 @@ socket.on('user-disconnected', userID=>{
         peers[userID].close()
 })
 
-navigator.mediaDevices.getUserMedia({audio:true,video:true})
+navigator.mediaDevices.getUserMedia({audio:{
+    echoCancellation:true,noiseSuppression:true,sampleSize:44100
+},video:true})
 .then(stream=>{
     userData.stream=stream
     const videoContainer=createVideoContainer(stream)
     videoContainer.querySelector('video').muted=true
+    videoContainer.querySelector('video').controls=false
+
     videoGrid.append(videoContainer)
     answerFunction(stream);
 })
